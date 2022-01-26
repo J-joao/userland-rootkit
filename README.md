@@ -46,3 +46,10 @@ chmod u=rwx setup.sh
 chmod u=rwx setup.sh
 ./setup.sh -r
 ```
+# current hooked functions:
+``` C
+struct dirent *(*orig_readdir)(DIR *dir);
+struct dirent64 *(*orig_readdir64)(DIR *dir);
+static void *(*orig_malloc)(size_t) = NULL;
+static int (*orig_main)(int, char **, char **);
+```
