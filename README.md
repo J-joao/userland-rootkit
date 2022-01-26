@@ -1,9 +1,19 @@
 # Monk3 userland rootkit
 
-## dependencies
+### dependencies:
 <ul>
     <li>docker</li>
 </ul>
+
+### my specs:
+
+<ul>
+    <li>Docker version 20.10.10, build tag v20.10.10</li>
+    <li>Docker Alpine Linux container kernel version 5.13.19_1</li>
+    <li>Void Linux kernel version 5.13.19_1</li>
+    <li>gcc (GCC) 10.2.1 20201203</li>
+</ul>
+
 
 # how does it work?
 Monk3 uses docker to escalate privileges and have access to the user's file system by mounting the root directory into /mnt and accessing it.
