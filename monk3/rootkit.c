@@ -4,9 +4,6 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
-#include <netinet/in.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include "res/config.h"
 
 #define RK_INFO "\e[1;31m[\e[0mMONK3\e[1;31m]\e[0m --> "
