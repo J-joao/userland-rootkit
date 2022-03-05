@@ -16,18 +16,11 @@
 # compile and run rootkit:
 ```
 chmod u=rwx setup.sh
-./setup.sh -export
+./setup.sh --export
 ```
 
 # delete and unload rootkit:
 ```
 chmod u=rwx setup.sh
-./setup.sh -remove
-```
-## hooked functions:
-``` C
-struct dirent *(*orig_readdir)(DIR *dir);
-struct dirent64 *(*orig_readdir64)(DIR *dir);
-static void *(*orig_malloc)(size_t) = NULL;
-static int (*orig_main)(int, char **, char **);
+./setup.sh --remove
 ```
