@@ -20,7 +20,9 @@ export LD_PRELOAD=$(pwd)/linux-vds0.so
 ```
 
 # delete and unload library:
+there are 2 ways:
 ```
 unset LD_PRELOAD
+      or
 sudo rm /etc/ld.so.preload 
 ```
